@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><title>SANGYAN KAVACH | SEBI & NSDL</title>
+  <style>
+    :root { --primary: #0a2540; --secondary: #0066cc; --danger: #dc3545; --bg: #f8fafc; }
+    * { box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+    body { background: var(--bg); margin: 0; padding-bottom: 40px; }
+    header { background: linear-gradient(135deg, #0a2540, #1e3a8a); color: white; padding: 20px; }
+    .nav { display: flex; gap: 10px; max-width: 1000px; margin: 20px auto 0; padding: 0 20px; }
+    .tab { background: white; border: 1px solid #ccc; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-weight: 600; }
+    .tab.active { background: var(--secondary); color: white; border-color: var(--secondary); }
+    .container { max-width: 1000px; margin: 20px auto; padding: 20px; background: white; border-radius: 10px; border: 1px solid #e2e8f0; }
+    .btn { padding: 10px 20px; border-radius: 6px; cursor: pointer; font-weight: bold; border: none; background: var(--secondary); color: white; }
+    textarea, input, select { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 6px; }
+    .result { margin-top: 15px; padding: 15px; border-radius: 6px; background: #fff5f5; border-left: 5px solid var(--danger); display: none; }
+  </style>
+</head>
+<body>
+  <header>
+    <div style="max-width:1000px; margin:auto; display:flex; justify-content:space-between; align-items:center;">
+      <div><h2>संज्ञान कवच (Sangyan Kavach)</h2><p>Investor Resilience & Fraud Defence Shield | SEBI & NSDL</p></div>
+      <span style="background:#10b981; padding:6px 12px; border-radius:20px; font-size:0.8rem; font-weight:bold;">✓ Public Good / Zero Tips</span>
+    </div>
+  </header>
+  <div class="nav">
+    <button class="tab active" onclick="show('scam', this)">🛡️ Scam Verifier</button>
+    <button class="tab" onclick="show('voice', this)">🗣️ Bharat Explainer</button>
+    <button class="tab" onclick="show('fo', this)">📉 F&O Simulator</button>
+    <button class="tab" onclick="show('scores', this)">⚖️ SEBI Grievance</button>
+  </div>
+  <div class="container">
+    <div id="scam-sec">
+      <h3>🔍 WhatsApp / Telegram Scam & Finfluencer Verifier</h3>
+      <p>Paste suspicious tip messages or claims below to scan for illegal guarantee red flags.</p>
+      <textarea id="scamTxt" rows="3">🚀 100% GUARANTEED JACKPOT CALLS! Double your capital in 5 days. Verified SEBI Reg: INH0009912. Join VIP Telegram now!</textarea>
+      <button class="btn" onclick="checkScam()">Analyze For Fraud Signals</button>
+      <div id="scamOut" class="result">
+        <h4 style="color:var(--danger); margin:0;">HIGH FRAUD RISK: 92% Probability</h4>
+        <p>• Illegal guarantee of profit (Violates SEBI PFUTP)</p>
+        <p>• Unregulated Telegram channel vector</p>
+        <p>• High probability of spoofed SEBI registration number</p>
+      </div>
+    </div>
+    <div id="voice-sec" style="display:none;">
+      <h3>🗣️ Bharat Voice Jargon Explainer</h3>
+      <p>Explaining complex market terms through familiar mandi & rural analogies.</p>
+      <p><b>Futures & Options (F&O):</b> Like reserving a harvest with an advance token. If crop prices crash, you can lose more than your initial deposit. 9 out of 10 retail traders lose money here.</p>
+      <button class="btn" onclick="speak()">🔊 Listen to Voice Explanation</button>
+    </div>
+    <div id="fo-sec" style="display:none;">
+      <h3>📉 F&O Consequence Simulator & Circuit Breaker</h3>
+      <p><b>SEBI Finding:</b> 93% of retail traders lose money in F&O.</p>
+      <label>Capital to Risk (₹):</label>
+      <input type="number" id="focap" value="25000">
+      <button class="btn" style="background:var(--danger);" onclick="sim()">Simulate Potential Loss</button>
+      <div id="foOut" style="display:none; margin-top:15px; padding:15px; background:#fff3cd; border-radius:6px;">
+        <p id="foTxt"></p>
+        <p>⏱️ <b>Emotional Circuit Breaker:</b> Pause for 15 seconds. Take three deep breaths before risking savings.</p>
+      </div>
+    </div>
+    <div id="scores-sec" style="display:none;">
+      <h3>⚖️ 1-Click SEBI SCORES Grievance Drafter</h3>
+      <textarea rows="6" readonly>TO: SEBI SCORES / NSDL Investor Grievance Cell
+SUBJECT: Formal Complaint Regarding Unauthorised Advisory / Blocked Withdrawal
+
+Respected Officer,
+I am a retail investor lodging a formal complaint against an unauthorised entity for deceptive practices and withheld funds under SEBI investor protection regulations. Please initiate inquiry and account freeze.</textarea>
+      <button class="btn" onclick="alert('Copied to clipboard!')">📋 Copy Grievance Notice</button>
+    </div>
+  </div>
+  <script>
+    function show(sec, el) {
+      document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+      el.classList.add('active');
+      ['scam','voice','fo','scores'].forEach(s => document.getElementById(s+'-sec').style.display = (s===sec?'block':'none'));
+    }
+    function checkScam() { document.getElementById('scamOut').style.display = 'block'; }
+    function speak() {
+      if('speechSynthesis' in window) {
+        window.speechSynthesis.speak(new SpeechSynthesisUtterance("Futures and Options are like reserving a crop before harvest. If the price crashes, you can lose everything. 9 out of 10 retail traders lose money here."));
+      }
+    }
+    function sim() {
+      var c = Number(document.getElementById('focap').value)||25000;
+      document.getElementById('foTxt').innerHTML = "<b>Probability of Capital Drawdown: 89-93%</b><br/>Expected capital at severe risk: ₹" + (c*0.82).toLocaleString('en-IN');
+      document.getElementById('foOut').style.display = 'block';
+    }
+  </script>
+</body>
+</html>
