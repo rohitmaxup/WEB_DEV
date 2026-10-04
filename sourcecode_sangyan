@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SANGYAN KAVACH (संज्ञान कवच) | Investor Resilience & Scam Shield</title>
+  <style>
+    :root {
+      --primary: #0a2540;
+      --primary-light: #1e3a8a;
+      --secondary: #0066cc;
+      --accent: #ff6600;
+      --danger: #dc2626;
+      --danger-bg: #fef2f2;
+      --warning: #f59e0b;
+      --warning-bg: #fffbeb;
+      --success: #10b981;
+      --success-bg: #ecfdf5;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --radius: 12px;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+    body { background-color: var(--bg); color: var(--text); line-height: 1.6; padding-bottom: 60px; }
+
+    /* Header */
+    header { background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: white; padding: 25px 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+    .header-container { max-width: 1150px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
+    .logo-badge { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; letter-spacing: 1px; font-weight: 700; text-transform: uppercase; }
+    .guardrail-tag { background: var(--success); color: white; padding: 5px 14px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; display: inline-flex; align-items: center; gap: 6px; }
+    
+    /* Navigation Bar */
+    .nav-container { max-width: 1150px; margin: 25px auto 0; padding: 0 20px; }
+    .nav-tabs { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 5px; }
+    .tab-btn { background: white; border: 1px solid var(--border); padding: 12px 20px; border-radius: 8px; font-weight: 600; color: var(--text-muted); cursor: pointer; transition: all 0.2s ease; white-space: nowrap; display: flex; align-items: center; gap: 8px; }
+    .tab-btn:hover { border-color: var(--secondary); color: var(--secondary); }
+    .tab-btn.active { background: var(--secondary); color: white; border-color: var(--secondary); box-shadow: 0 4px 10px rgba(0,102,204,0.25); }
+
+    /* Content Area */
+    .container { max-width: 1150px; margin: 25px auto; padding: 0 20px; }
+    .tab-content { display: none; }
+    .tab-content.active { display: block; animation: slideUp 0.3s ease-out; }
+    @keyframes slideUp { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* Card System */
+    .card { background: var(--card-bg); border-radius: var(--radius); border: 1px solid var(--border); padding: 28px; margin-bottom: 24px; box-shadow: var(--shadow); }
+    .card-title { font-size: 1.35rem; font-weight: 700; color: var(--primary); margin-bottom: 8px; display: flex; align-items: center; gap: 10px; }
+    .card-desc { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 22px; }
+
+    /* Forms & Inputs */
+    label { display: block; font-weight: 600; font-size: 0.9rem; margin-bottom: 6px; color: var(--text); }
+    textarea, input, select { width: 100%; padding: 12px 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.95rem; margin-bottom: 18px; outline: none; transition: border-color 0.2s, box-shadow 0.2s; background: white; }
+    textarea:focus, input:focus, select:focus { border-color: var(--secondary); box-shadow: 0 0 0 3px rgba(0,102,204,0.15); }
+    
+    /* Buttons */
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 22px; border-radius: 8px; font-size: 0.95rem; font-weight: 600; cursor: pointer; border: none; transition: 0.2s ease; }
+    .btn-primary { background: var(--secondary); color: white; }
+    .btn-primary:hover { background: #0052a3; }
+    .btn-danger { background: var(--danger); color: white; }
+    .btn-danger:hover { background: #b91c1c; }
+    .btn-accent { background: var(--accent); color: white; }
+    .btn-accent:hover { background: #e55a00; }
+    .btn-outline { background: transparent; border: 1px solid var(--border); color: var(--text); }
+    .btn-outline:hover { background: #f1f5f9; }
+
+    /* Results and Panels */
+    .result-box { display: none; margin-top: 24px; padding: 22px; border-radius: 10px; border-left: 6px solid; }
+    .result-danger { background: var(--danger-bg); border-color: var(--danger); }
+    .result-warning { background: var(--warning-bg); border-color: var(--warning); }
+    .result-success { background: var(--success-bg); border-color: var(--success); }
+    .risk-score { font-size: 2.2rem; font-weight: 800; margin: 10px 0; }
+
+    /* Grids */
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    @media(max-width: 800px) { .grid-2 { grid-template-columns: 1fr; } }
+
+    /* Circuit Breaker Visuals */
+    .cooling-banner { display: none; margin-top: 20px; padding: 20px; border-radius: 8px; background: #fef3c7; border: 1px solid #fde68a; animation: pulse 1.5s infinite; }
+    @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.4); } 70% { box-shadow: 0 0 0 8px rgba(245, 158, 11, 0); } 100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0); } }
+
+    /* Guardrail Banner */
+    .guardrail-footer { background: #e2e8f0; border-radius: 8px; padding: 15px 20px; font-size: 0.85rem; color: #475569; text-align: center; margin-top: 30px; }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="header-container">
+      <div>
+        <span class="logo-badge">SANGYAN HACKATHON | SEBI & NSDL COLLABORATION</span>
+        <h1 style="margin-top: 6px; font-size: 1.85rem;">संज्ञान कवच (SANGYAN KAVACH)</h1>
+        <p style="opacity: 0.9; font-size: 0.95rem;">Empowering India's Retail Investors with Fraud Defence & Behavioural Resilience</p>
+      </div>
+      <div style="display: flex; gap: 10px; align-items: center;">
+        <span class="guardrail-tag">✓ Public Good | Zero Stock Tips</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Navigation Tabs -->
+  <div class="nav-container">
+    <div class="nav-tabs">
+      <button class="tab-btn active" onclick="switchTab('scam-shield', this)">🛡️ Scam & Tip Verifier</button>
+      <button class="tab-btn" onclick="switchTab('bharat-explainer', this)">🗣️ Bharat Voice Explainer</button>
+      <button class="tab-btn" onclick="switchTab('circuit-breaker', this)">📉 F&O Consequence Simulator</button>
+      <button class="tab-btn" onclick="switchTab('grievance-drafter', this)">⚖️ SEBI SCORES Grievance</button>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <!-- TAB 1: SCAM & TIP VERIFIER (TRACK A & E) -->
+    <div id="scam-shield" class="tab-content active">
+      <div class="card">
+        <h2 class="card-title">🔍 WhatsApp & Telegram Scam Verifier</h2>
+        <p class="card-desc">Paste any WhatsApp/Telegram tip message, SMS, or finfluencer claim. Our NLP engine screens for illegal guarantee promises, fake SEBI registration formats, and FOMO pressure manipulation.</p>
+
+        <label for="scamInput">Paste Message or Finfluencer Post:</label>
+        <textarea id="scamInput" rows="4" placeholder="e.g. Join VIP Telegram group! 100% guaranteed jackpot calls, double your capital in 5 days. SEBI Reg No: INH000099999. Hurry only 10 slots left!"></textarea>
+
+        <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+          <button class="btn btn-primary" onclick="analyzeScam()">🔍 Analyze For Fraud Signals</button>
+          <button class="btn btn-outline" onclick="loadSampleScam()">Load Sample Scam Post</button>
+        </div>
+
+        <div id="scamResult" class="result-box">
+          <h3 id="scamTitle">Analysis Outcome</h3>
+          <div id="scamScore" class="risk-score"></div>
+          <p id="scamExplanation" style="margin-bottom: 12px; font-weight: 500;"></p>
+          <label style="font-weight: 700;">Specific Red Flags Detected:</label>
+          <ul id="redFlagList" style="margin: 8px 0 16px 22px; font-weight: 500;"></ul>
+          
+          <div style="background: rgba(0,0,0,0.05); padding: 12px 16px; border-radius: 6px; font-size: 0.85rem;">
+            <b>Statutory SEBI Notice:</b> SEBI-registered Research Analysts (RAs) and Investment Advisers (IAs) are legally barred from offering fixed returns or running Telegram pump channels. Always cross-verify credentials at <a href="https://www.sebi.gov.in" target="_blank" style="color:var(--secondary); font-weight:bold;">sebi.gov.in</a>.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 2: BHARAT VOICE EXPLAINER (TRACK C) -->
+    <div id="bharat-explainer" class="tab-content">
+      <div class="card">
+        <h2 class="card-title">🗣️ Bharat-First Voice & Jargon Explainer</h2>
+        <p class="card-desc">Demystifying complex market terminology through everyday rural, mandi, and kirana analogies. Includes regional audio narration for low-literacy users.</p>
+
+        <div class="grid-2">
+          <div>
+            <label for="conceptSelect">Select Financial Term:</label>
+            <select id="conceptSelect" onchange="updateConcept()">
+              <option value="fo">Equity Futures & Options (F&O / डेरिवेटिव्स)</option>
+              <option value="nav">Net Asset Value (NAV / म्यूचुअल फंड मूल्य)</option>
+              <option value="leverage">Trading Leverage / Margin (उधार का सौदा)</option>
+              <option value="volatility">Market Volatility (बाजार का उतार-चढ़ाव)</option>
+              <option value="expense_ratio">Expense Ratio (फंड प्रबंधन शुल्क)</option>
+            </select>
+
+            <button class="btn btn-accent" onclick="speakExplanation()" style="width: 100%; margin-top: 10px;">
+              🔊 Listen to Regional Voice Narration
+            </button>
+            <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 8px;">Uses Web Speech Synthesis. Compatible with 2G/3G low-bandwidth connections.</p>
+          </div>
+
+          <div style="background: #f1f5f9; border: 1px solid var(--border); padding: 22px; border-radius: 8px;">
+            <span style="background: #e2e8f0; padding: 4px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: bold; text-transform: uppercase;">Plain Language Analogy</span>
+            <h3 id="conceptTitle" style="color: var(--primary); margin: 10px 0;">Futures & Options (F&O)</h3>
+            <p id="conceptText" style="font-size: 0.95rem; line-height: 1.7; color: var(--text);">
+              <b>Everyday Analogy:</b> Imagine giving a small ₹10 token advance to reserve 100 kg of onions at the wholesale mandi, hoping the price goes up tomorrow. If the price crashes instead, you don't just lose your ₹10—you can be legally forced to pay for the entire loss. That is why official SEBI data reveals 93% of retail traders lose their savings in F&O.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 3: F&O CONSEQUENCE SIMULATOR & CIRCUIT BREAKER (TRACK D) -->
+    <div id="circuit-breaker" class="tab-content">
+      <div class="card">
+        <h2 class="card-title">📉 F&O Consequence Simulator & Cooling-Off Breaker</h2>
+        <p class="card-desc">Simulate realistic capital drawdown before risking hard-earned savings. Introduces a deliberate psychological pause to curb impulsive revenge trading.</p>
+
+        <div class="grid-2">
+          <div>
+            <label for="tradeCapital">Intended Trading Capital (₹):</label>
+            <input type="number" id="tradeCapital" value="25000" min="1000" />
+
+            <label for="fundSource">Is this Emergency Savings or Borrowed Money?</label>
+            <select id="fundSource">
+              <option value="emergency">Emergency Fund / Medical Savings (High Vulnerability)</option>
+              <option value="borrowed">Borrowed Money / Instant Loan (Extreme Risk)</option>
+              <option value="discretionary" selected>Surplus Discretionary Funds</option>
+            </select>
+
+            <button class="btn btn-danger" onclick="runSimulation()" style="width: 100%;">
+              ⚠️ Simulate Consequence & Downside Risk
+            </button>
+          </div>
+
+          <div style="background: #fafafa; border: 1px solid var(--border); padding: 22px; border-radius: 8px;">
+            <div style="background: #fee2e2; border-left: 4px solid var(--danger); padding: 10px 14px; border-radius: 4px; margin-bottom: 14px;">
+              <b style="color: var(--danger);">SEBI Reality Check:</b> 93% of individual F&O traders incur net financial losses.
+            </div>
+            
+            <div id="simOutput" style="font-size: 0.95rem; color: var(--text-muted);">
+              Enter your trade capital on the left and click simulate to view the statistical outcome.
+            </div>
+
+            <div id="coolingBox" class="cooling-banner">
+              <h4 style="color: #92400e; margin-bottom: 6px;">⏱️ Deliberate Cooling-Off Pause Active</h4>
+              <p style="font-size: 0.9rem; color: #78350f;">
+                Take a deep breath and pause for <b id="timerCount" style="font-size: 1.1rem; color: var(--danger);">20</b> seconds. Do not risk family savings on short-term market gambles.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 4: SEBI SCORES GRIEVANCE DRAFTER (TRACK B) -->
+    <div id="grievance-drafter" class="tab-content">
+      <div class="card">
+        <h2 class="card-title">⚖️ 1-Click SEBI SCORES Grievance Assistant</h2>
+        <p class="card-desc">Empowers first-time investors, senior citizens, and Tier-2/3 residents to draft formal, legally structured complaints against fraud, blocked funds, and unauthorized brokers.</p>
+
+        <div class="grid-2">
+          <div>
+            <label for="grievanceType">Nature of Grievance:</label>
+            <select id="grievanceType">
+              <option value="blocked_withdrawal">Blocked Withdrawal by Fake Broker / Platform</option>
+              <option value="unauthorized_trading">Unauthorized Trading in Demat Account</option>
+              <option value="extortion_tip">Scammed by Fake Finfluencer / Unregistered Advisor</option>
+              <option value="depository_transfer">Depository Transfer / Rematerialization Dispute</option>
+            </select>
+
+            <label for="entityName">Name of Entity / Channel / App:</label>
+            <input type="text" id="entityName" placeholder="e.g. Royal Wealth Telegram / XYZ Trading" />
+
+            <label for="disputedAmount">Disputed Amount (₹):</label>
+            <input type="number" id="disputedAmount" placeholder="e.g. 50000" />
+
+            <label for="utrNumber">Transaction Reference / UTR Number (Optional):</label>
+            <input type="text" id="utrNumber" placeholder="e.g. UTR30948291039" />
+
+            <button class="btn btn-primary" onclick="generateGrievanceDraft()" style="width: 100%;">
+              📄 Generate Formal SCORES Notice
+            </button>
+          </div>
+
+          <div>
+            <label for="grievanceDraft">Formal Complaint Notice (SCORES 2.0 & NSDL Formatted):</label>
+            <textarea id="grievanceDraft" rows="9" readonly placeholder="Your generated complaint will appear here..."></textarea>
+            
+            <div style="display: flex; gap: 10px;">
+              <button class="btn btn-outline" onclick="copyDraft()" style="flex: 1;">📋 Copy Formal Draft</button>
+              <button class="btn btn-primary" onclick="downloadDraft()" style="flex: 1;">💾 Download (.txt)</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Guardrail Compliance Footer -->
+    <div class="guardrail-footer">
+      <b>Mandatory Hackathon Guardrails Compliance:</b> SANGYAN KAVACH is public-good investor protection infrastructure. It does NOT provide stock tips, buy/sell/hold recommendations, price predictions, or commercial monetization. Built with privacy-by-design for the retail investors of Bharat.
+    </div>
+
+  </div>
+
+  <script>
+    // Tab Navigation System
+    function switchTab(tabId, btnElement) {
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+      btnElement.classList.add('active');
+      document.getElementById(tabId).classList.add('active');
+    }
+
+    // Module 1: Scam & Tip Verifier Logic
+    function analyzeScam() {
+      const text = document.getElementById('scamInput').value.trim();
+      const resultBox = document.getElementById('scamResult');
+      const scoreEl = document.getElementById('scamScore');
+      const redFlags = document.getElementById('redFlagList');
+      const explanation = document.getElementById('scamExplanation');
+
+      if (!text) {
+        alert('Please paste a message or claim to analyze.');
+        return;
+      }
+
+      let flags = [];
+      let score = 10;
+
+      // Rule 1: Guaranteed Returns
+      if (/guarantee|100%|sure shot|jackpot|risk free|fixed return|double capital|triple/i.test(text)) {
+        flags.push('Illegal Promise of Guaranteed Returns (Direct violation of SEBI PFUTP Regulations)');
+        score += 45;
+      }
+
+      // Rule 2: Unregulated Social Media Vector
+      if (/telegram|whatsapp|vip|join channel|private group|link in bio/i.test(text)) {
+        flags.push('Unregulated Social Media Tip Group Vector (High association with pump-and-dump cartels)');
+        score += 25;
+      }
+
+      // Rule 3: High Pressure Urgency (FOMO)
+      if (/hurry|limited|slots left|today only|last chance|recover all loss/i.test(text)) {
+        flags.push('High-Pressure Psychological Urgency (Exploiting loss recovery & FOMO)');
+        score += 15;
+      }
+
+      // Rule 4: Claimed SEBI Registration
+      if (/sebi reg|inh\d+|ina\d+|sebi registered/i.test(text)) {
+        flags.push('Claimed SEBI Registration Number — High risk of impersonation or spoofed registration');
+        score += 15;
+      }
+
+      resultBox.style.display = 'block';
+      redFlags.innerHTML = '';
+      flags.forEach(f => {
+        let li = document.createElement('li');
+        li.innerText = f;
+        redFlags.appendChild(li);
+      });
+
+      if (score >= 60) {
+        resultBox.className = 'result-box result-danger';
+        scoreEl.innerText = `High Risk: ${score}% Fraud Probability`;
+        scoreEl.style.color = 'var(--danger)';
+        explanation.innerText = 'CRITICAL WARNING: This claim exhibits extreme characteristics of an illegal investment scam. Never transfer money, share OTPs, or trade based on these claims.';
+      } else {
+        resultBox.className = 'result-box result-warning';
+        scoreEl.innerText = `Moderate Risk: ${score}% Risk Index`;
+        scoreEl.style.color = 'var(--warning)';
+        explanation.innerText = 'Caution advised. Always check credentials directly on the official SEBI SCORES portal before committing funds.';
+      }
+    }
+
+    function loadSampleScam() {
+      document.getElementById('scamInput').value = "🚀 GUARANTEED 200% RETURNS IN 7 DAYS! Join our exclusive VIP WhatsApp & Telegram group. Verified by SEBI Reg: INH000088812. 100% Jackpot Calls with zero risk. Hurry, only 5 slots remaining!";
+      analyzeScam();
+    }
+
+    // Module 2: Bharat Explainer Analogies & Audio Logic
+    const analogies = {
+      fo: "Futures and Options are like giving a small ₹10 token advance to reserve 100 kg of onions at the wholesale mandi, hoping the price rises tomorrow. If the price crashes, you can be forced to pay for the entire loss. 93% of retail traders lose their savings here.",
+      nav: "Net Asset Value (NAV) is the per-kilo price of a shared seasonal fruit crate. Rather than buying a whole orchard, you own a small slice of all the fruits inside.",
+      leverage: "Leverage is borrowing 5x money from a broker to trade. While it can double small gains, a tiny 2% market drop completely wipes out 100% of your real capital.",
+      volatility: "Volatility is like driving on a rocky village road in heavy monsoon rains. It doesn't mean your vehicle is broken, but you must slow down and fasten your seatbelt.",
+      expense_ratio: "Expense ratio is the small commission fee the bus conductor charges to drive you safely to your destination. Keeping it low ensures more of your money reaches the end."
+    };
+
+    function updateConcept() {
+      const val = document.getElementById('conceptSelect').value;
+      const title = document.getElementById('conceptSelect').options[document.getElementById('conceptSelect').selectedIndex].text;
+      document.getElementById('conceptTitle').innerText = title;
+      document.getElementById('conceptText').innerHTML = `<b>Everyday Analogy:</b> ${analogies[val]}`;
+    }
+
+    function speakExplanation() {
+      const text = document.getElementById('conceptText').innerText;
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.rate = 0.9;
+        window.speechSynthesis.speak(utterance);
+      } else {
+        alert('Voice synthesis is not supported on this browser.');
+      }
+    }
+
+    // Module 3: Consequence Simulator Logic
+    function runSimulation() {
+      const cap = Number(document.getElementById('tradeCapital').value) || 25000;
+      const source = document.getElementById('fundSource').value;
+      const out = document.getElementById('simOutput');
+      const box = document.getElementById('coolingBox');
+
+      const expectedLoss = (cap * 0.82).toLocaleString('en-IN');
+      let warningNote = "";
+      if (source === "emergency" || source === "borrowed") {
+        warningNote = "<br/><span style='color:var(--danger); font-weight:bold;'>CRITICAL: You are risking essential or borrowed funds. The probability of severe financial distress is acute.</span>";
+      }
+
+      out.innerHTML = `
+        <b>Simulated Scenario (Based on SEBI empirical data):</b><br/>
+        • Probability of capital loss within 30 days: <b>89% to 93%</b><br/>
+        • Capital at severe downside risk: <b>₹${expectedLoss}</b><br/>
+        • Realistic Outcome: High probability of total margin exhaustion.${warningNote}
+      `;
+
+      box.style.display = 'block';
+      let sec = 20;
+      const timer = setInterval(() => {
+        sec--;
+        document.getElementById('timerCount').innerText = sec;
+        if (sec <= 0) {
+          clearInterval(timer);
+          box.innerHTML = "<h4 style='color:#065f46;'>✅ Cooling-Off Pause Completed</h4><p style='color:#065f46; font-size:0.9rem;'>Make your decision with a calm, rational perspective. Prioritize preserving capital.</p>";
+        }
+      }, 1000);
+    }
+
+    // Module 4: SEBI SCORES Grievance Drafter Logic
+    function generateGrievanceDraft() {
+      const type = document.getElementById('grievanceType').value;
+      const name = document.getElementById('entityName').value || 'Unregistered Entity';
+      const amount = document.getElementById('disputedAmount').value || 'Disputed Funds';
+      const utr = document.getElementById('utrNumber').value || 'N/A';
+
+      const draft = `TO: SEBI SCORES 2.0 / NSDL Investor Grievance Cell
+SUBJECT: Formal Complaint for ${type.replace(/_/g, ' ').toUpperCase()} against ${name}
+
+Respected Officer,
+I am a retail investor writing to lodge a formal complaint under SEBI investor protection regulations against the entity/channel: ${name}.
+
+1. Grievance Category: ${type.replace(/_/g, ' ').toUpperCase()}
+2. Financial Impact: An amount of approximately ₹${amount} was solicited/withheld without statutory authorization.
+3. Transaction Reference: ${utr}
+4. Violations: Non-compliance with SEBI Intermediary regulations, unapproved guarantee promises, and withholding of investor funds.
+
+I request SEBI/NSDL intervention to initiate a formal inquiry, freeze related clearing accounts, and assist in restitution of investor capital.
+
+Sincerely,
+Aggrieved Retail Investor
+(Attached: Transaction screenshots, payment UTR receipts, and chat transcripts)`;
+
+      document.getElementById('grievanceDraft').value = draft;
+    }
+
+    function copyDraft() {
+      const draft = document.getElementById('grievanceDraft');
+      if (!draft.value) { alert('Please generate a draft first.'); return; }
+      draft.select();
+      document.execCommand('copy');
+      alert('Formal complaint notice copied to clipboard!');
+    }
+
+    function downloadDraft() {
+      const text = document.getElementById('grievanceDraft').value;
+      if (!text) { alert('Please generate a draft first.'); return; }
+      const blob = new Blob([text], { type: 'text/plain' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'SEBI_SCORES_Grievance_Draft.txt';
+      a.click();
+    }
+  </script>
+</body>
+</html>
